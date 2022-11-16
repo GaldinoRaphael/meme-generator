@@ -1,0 +1,17 @@
+nav{
+    max-height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 37px;
+
+    background-color: #D9AFD9;
+    background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+}
+
+.nav-logo{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
