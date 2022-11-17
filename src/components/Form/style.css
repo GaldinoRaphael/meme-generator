@@ -6,6 +6,8 @@
 
     font-size: 12px;
     line-height: 14px;
+
+    margin-bottom: 38px;
 }
 
 .form-input{
@@ -37,4 +39,8 @@
 
 .form-button--icon{
     height: 25px;
+}
+
+.meme-image{
+    max-width: 477px;
 }
