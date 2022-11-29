@@ -5,9 +5,8 @@ import Generator from '../../imgs/generator.png'
 
 export default function Form(){
 
-    const [meme, setMeme] = useState({topText: '', bottomText: '', randomImage: "https://api.imgflip.com/get_memes"});
+    const [meme, setMeme] = useState({topText: '', bottomText: '', randomImage: "http://i.imgflip.com/1bij.jpg"});
     const [allMemesImages, setAllMemesImages] = useState();
-
 
     function getRandomImage(){
         const memeArray =  allMemesImages.data.memes;
@@ -35,9 +34,13 @@ export default function Form(){
     }
 
     useEffect(() => {
-        fetch("https://api.imgflip.com/get_memes")
-        .then((res) => res.json())
-        .then((res) => setAllMemesImages(res))
+        async function getMemes(){
+            const res = await fetch("https://api.imgflip.com/get_memes");
+            const memes = await res.json();
+            setAllMemesImages(memes);
+        }
+        getMemes();
+        
     }, [])
 
     return(
