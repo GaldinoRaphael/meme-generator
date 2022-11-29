@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './style.css';
 
 import Generator from '../../imgs/generator.png'
 
-import memesData from '../../data/memesData'
-
-
 export default function Form(){
 
-    const [meme, setMeme] = useState({topText: '', bottomText: '', randomImage: "http://i.imgflip.com/1bij.jpg"});
-    const [allMemesImages, setAllMemesImages] = useState(memesData);
+    const [meme, setMeme] = useState({topText: '', bottomText: '', randomImage: "https://api.imgflip.com/get_memes"});
+    const [allMemesImages, setAllMemesImages] = useState();
+
 
     function getRandomImage(){
         const memeArray =  allMemesImages.data.memes;
@@ -35,6 +33,12 @@ export default function Form(){
             }
         })
     }
+
+    useEffect(() => {
+        fetch("https://api.imgflip.com/get_memes")
+        .then((res) => res.json())
+        .then((res) => setAllMemesImages(res))
+    }, [])
 
     return(
         <>
